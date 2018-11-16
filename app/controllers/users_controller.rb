@@ -9,15 +9,15 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if User.logged_in?(session)
-      redirect to '/tweets'
+      redirect to '/books'
     else
-      erb :'users/create_user'
+      erb :'users/register'
     end
   end
 
   get '/login' do
     if User.logged_in?(session)
-      redirect to '/tweets'
+      redirect to '/books'
     else
       erb :'users/login'
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect to "/tweets"
+      redirect to "/books"
     else
       @error_message = "You must enter a username, email and password!"
       @users = User.all
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params["username"], email: params["email"], password: params[:password])
     if @user
       session[:user_id] = @user.id
-      redirect to "/tweets"
+      redirect to "/books"
     else
       redirect to "/signup"
     end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params["username"])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect '/tweets'
+      redirect '/books'
     else
       redirect to "/login"
     end
