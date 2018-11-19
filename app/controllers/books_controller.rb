@@ -69,4 +69,15 @@ class BooksController < ApplicationController
     redirect to '/books'
   end
 
+  delete '/books/:id/delete' do
+    if User.logged_in?(session)
+      user = User.current_user(session)
+      book = Book.find_by(id: params[:id])
+      if book && user.id == book.user.id
+        book.destroy
+      end
+    end
+    redirect to '/books'
+  end
+
 end
