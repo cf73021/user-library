@@ -1,0 +1,19 @@
+<h2>Add a new Book</h2>
+
+  <% if @error_message %>
+    <p><%= @error_message %></p>
+  <% end %>
+
+  <form method="POST" action="/books">
+    <p>
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title">
+    </p>
+    <p>
+      <label for="author">Author:</label>
+      <input type="text" name="author" id="author">
+    </p>
+    <p>
+      <input type="submit" id="submit" value="submit">
+    </p>
+  </form>
