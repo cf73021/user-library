@@ -8,6 +8,11 @@ class BooksController < ApplicationController
   end
 
   get '/books' do
-    erb :'books/books'
+    @books = Book.all
+    if User.logged_in?(session)
+      erb :'books/books'
+    else
+      redirect to "/login"
+    end
   end
 end

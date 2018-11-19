@@ -1,0 +1,9 @@
+<h3>Here are all of the Books:</h3>
+<p>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%=book.title%>, by <%=book.author%></li>
+    <%end%>
+  </ul>
+</p>
+<p><a href="/logout">Log Out</a></p>

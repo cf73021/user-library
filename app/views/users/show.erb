@@ -1,1 +1,8 @@
-<p>This is the show page.</p>
+<h1><%=@user.username%></h1>
+
+<h3>Books:</h3>
+  <ul>
+    <% @user.books.each do |book| %>
+      <li><%=book.content%></li>
+    <%end%>
+  </ul>
